@@ -1,6 +1,5 @@
-"colorscheme evening
-colorscheme morning
-
+inoremap <c-c> <esc>
+nnoremap <c-c> <nop>
 let mapleader = " "
 set nocompatible
 "set timeoutlen=50
@@ -34,22 +33,25 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'machakann/vim-swap'
 "Plug 'uplus/vim-clang-rename'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 ", {'rtp': 'vim/'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'junegunn/fzf.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'morhetz/gruvbox'
 Plug 'AndrewRadev/inline_edit.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'vim-scripts/visualrepeat'
+" Plug 'neoclide/coc.nvim'
 call plug#end()
 
-let g:ycm_show_diagnostics_ui = 0
-nnoremap <leader>D <plug>(YCMHover)
-inoremap <c-d> <c-o><plug>(YCMHover)
+" let g:ycm_show_diagnostics_ui = 0
+" nnoremap <leader>D <plug>(YCMHover)
+" inoremap <c-d> <c-o><plug>(YCMHover)
 
 colorscheme gruvbox
 set bg=dark
@@ -69,6 +71,9 @@ nnoremap <Leader>js /<\/script><cr>:InlineEdit<cr><c-w>T
 
 "autocmd BufRead,BufNewFile * setlocal signcolumn=yes
 "autocmd FileType undotree,tagbar,nerdtree setlocal signcolumn=no
+
+
+
 nnoremap <leader>gu :call MyUndotreeToggle()<cr>
 
 :command! -nargs=1 Silent execute ':silent !'.<q-args> | execute ':redraw!'
@@ -111,7 +116,7 @@ set autochdir
 "hi Visual term=reverse cterm=reverse guibg=Grey
 
 " recursive search upwards for tags file
-set tags+=tags;$HOME
+"set tags+=tags;$HOME
 "nnoremap <C-]> :tab tag <c-r><c-w><cr>
 
 
@@ -260,6 +265,8 @@ vnoremap cD "+D
 
 nnoremap k gk
 nnoremap j gj
+nnoremap gj j
+nnoremap gk k
 
 let $PAGER=''
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
